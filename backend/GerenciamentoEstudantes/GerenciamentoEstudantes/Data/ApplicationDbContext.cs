@@ -9,4 +9,12 @@ public class ApplicationDbContext : DbContext
     {
     }
     public DbSet<Aluno> Alunos { get; set; }
+    public DbSet<Disciplina> Disciplinas { get; set;}
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
